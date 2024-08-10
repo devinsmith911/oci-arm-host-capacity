@@ -12,6 +12,6 @@ COPY . ./
 
 RUN touch oci.log
 
-RUN echo "* * * * * /usr/local/bin/php /app/index.php >> /dev/stdout" | crontab -
+RUN echo "*/10 * * * * /usr/local/bin/php /app/index.php >> /dev/stdout" | crontab -
 
 ENTRYPOINT ["crond", "&&", "tail", "-f", "/app/oci.log"]
