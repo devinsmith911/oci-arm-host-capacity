@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  oci:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - OCI_REGION=
+      - OCI_USER_ID=
+      - OCI_TENANCY_ID=
+      - OCI_KEY_FINGERPRINT=
+      - OCI_PRIVATE_KEY_FILENAME=/run/secrets/key
+      - OCI_SUBNET_ID=
+      - OCI_IMAGE_ID=
+      - OCI_OCPUS=
+      - OCI_MEMORY_IN_GBS=
+      - OCI_SHAPE=
+      - OCI_MAX_INSTANCES=
+      - OCI_SSH_PUBLIC_KEY=
+      - OCI_AVAILABILITY_DOMAIN=
+      - CACHE_AVAILABILITY_DOMAINS=
+      - OCI_BOOT_VOLUME_SIZE_IN_GBS=
+      - TOO_MANY_REQUESTS_TIME_WAIT=
+    secrets:
+      - key
+
+secrets:
+  key:
+    file: ./key.pem
